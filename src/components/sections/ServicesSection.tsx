@@ -79,7 +79,7 @@ const ServicesSection: React.FC = () => {
 					{services.map((service) => (
 						<div
 							key={service.id}
-							className="rounded-xl p-8 border border-[#64ffda]/20 shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-2 group glow-border-64ffda"
+							className="rounded-xl p-8 border border-[#64ffda]/20 shadow-lg traglow-border-64ffdansition-all duration-300 hover:shadow-xl hover:-translate-y-2 group"
 							style={{
 								background: '#112240', // Match card background to section
 							}}
