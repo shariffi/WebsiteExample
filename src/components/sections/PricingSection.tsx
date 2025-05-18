@@ -163,14 +163,19 @@ const PricingSection: React.FC = () => {
 											£{tier.oneTimeCost}
 										</span>
 									) : (
-										<span className="text-4xl font-bold text-white">
-											{formatPrice(
-												isAnnual ? tier.annualPrice / 12 : tier.monthlyPrice
-											)}
-											<span className="text-gray-400 ml-2">
-												{isAnnual ? '/mo' : '/mo'}
+										<div>
+											<span className="text-4xl font-bold text-white">
+												{formatPrice(
+													isAnnual ? tier.annualPrice / 12 : tier.monthlyPrice
+												)}
+												<span className="text-gray-400 ml-2">
+													{isAnnual ? '/mo' : '/mo'}
+												</span>
 											</span>
-										</span>
+											<p className="text-sm text-gray-400 mt-1">
+												£1,250 setup fee
+											</p>
+										</div>
 									)}
 								</div>
 								<a
