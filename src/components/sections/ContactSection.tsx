@@ -135,8 +135,8 @@ const ContactSection: React.FC = () => {
                   </div>
                   <div>
                     <h4 className="text-white font-medium">Email Us</h4>
-                    <a href="mailto:hello@webstudio.com" className="text-gray-300 hover:text-indigo-400 transition-colors duration-300">
-                      hello@webstudio.com
+                    <a href="mailto:ibraheemshariff@hotmail.co.uk" className="text-gray-300 hover:text-indigo-400 transition-colors duration-300">
+                      ibraheemshariff@hotmail.co.uk
                     </a>
                   </div>
                 </div>
