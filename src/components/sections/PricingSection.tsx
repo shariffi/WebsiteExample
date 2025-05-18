@@ -7,32 +7,30 @@ const pricingTiers: PricingTier[] = [
 		id: 1,
 		name: 'Starter',
 		description: 'Perfect for small businesses just getting started online.',
-		monthlyPrice: 1250,
-		annualPrice: 1250,
+		monthlyPrice: 0, // No monthly cost for Starter
+		annualPrice: 0, // No annual cost for Starter
 		features: [
-			'Custom website design',
-			'5 pages included',
-			'Mobile responsive',
-			'Contact form',
-			'Basic SEO setup',
+			'Custom website design or improvement',
+			'Up to 5 pages included',
+			'Mobile responsive design',
+			'Basic contact form',
 			'One-time payment',
 		],
 		ctaText: 'Get Started',
+		oneTimeCost: 1000, // One-time payment of £1000
 	},
 	{
 		id: 2,
 		name: 'Essential',
-		description: 'Our most popular plan for growing businesses.',
-		monthlyPrice: 1250 + 49,
-		annualPrice: 1250 + 39 * 12,
+		description: 'Basic SEO and marketing services for growing businesses.',
+		monthlyPrice: 150, // £150 per month
+		annualPrice: 150 * 12 * 0.9, // 10% discount for annual billing
 		features: [
-			'Everything in Starter',
-			'Up to 10 pages',
-			'Monthly website care',
-			'Security updates',
-			'Weekly backups',
-			'Basic analytics',
-			'24/7 support',
+			'Basic SEO setup and optimization',
+			'Monthly website updates',
+			'Basic marketing strategies',
+			'Monthly performance reports',
+			'Email support',
 		],
 		recommended: true,
 		ctaText: 'Choose Essential',
@@ -40,34 +38,32 @@ const pricingTiers: PricingTier[] = [
 	{
 		id: 3,
 		name: 'Growth',
-		description: 'Advanced features for businesses ready to expand.',
-		monthlyPrice: 1250 + 149,
-		annualPrice: 1250 + 129 * 12,
+		description: 'Advanced SEO and marketing services for expanding businesses.',
+		monthlyPrice: 300, // £300 per month
+		annualPrice: 300 * 12 * 0.9, // 10% discount for annual billing
 		features: [
 			'Everything in Essential',
-			'Up to 20 pages',
-			'Advanced SEO package',
-			'Content creation',
-			'Monthly performance report',
-			'E-commerce functionality',
-			'Social media integration',
+			'Advanced SEO strategies',
+			'Social media management',
+			'Content creation (blogs, posts)',
+			'Weekly performance reports',
+			'Priority email support',
 		],
 		ctaText: 'Choose Growth',
 	},
 	{
 		id: 4,
 		name: 'Premium',
-		description: 'Complete solution for established businesses.',
-		monthlyPrice: 1250 + 299,
-		annualPrice: 1250 + 269 * 12,
+		description: 'Comprehensive services for established businesses.',
+		monthlyPrice: 500, // £500 per month
+		annualPrice: 500 * 12 * 0.9, // 10% discount for annual billing
 		features: [
 			'Everything in Growth',
-			'Unlimited pages',
-			'Custom functionality',
+			'Custom marketing campaigns',
+			'Advanced analytics and tracking',
+			'Conversion rate optimization',
+			'Monthly strategy calls',
 			'Priority support',
-			'Advanced analytics',
-			'Conversion optimization',
-			'Monthly strategy call',
 		],
 		ctaText: 'Choose Premium',
 	},
@@ -77,16 +73,15 @@ const PricingSection: React.FC = () => {
 	const [isAnnual, setIsAnnual] = useState(false);
 
 	const formatPrice = (price: number): string => {
-		if (isAnnual && price > 1250) {
-			return `£${Math.floor(price / 100)}${price % 100 ? `.${price % 100}` : ''}/mo`;
-		}
-		return `£${Math.floor(price / 100)}${price % 100 ? `.${price % 100}` : ''}`;
+		return `£${Math.floor(price)}`;
 	};
 
 	const getDescription = (tier: PricingTier): string => {
 		if (tier.id === 1) return tier.description;
 		return isAnnual
-			? `${tier.description} Save £${Math.floor((tier.monthlyPrice * 12 - tier.annualPrice) / 100)} with annual billing.`
+			? `${tier.description} Save £${Math.floor(
+					tier.monthlyPrice * 12 - tier.annualPrice
+			  )} with annual billing.`
 			: tier.description;
 	};
 
@@ -134,7 +129,7 @@ const PricingSection: React.FC = () => {
 						>
 							Annual{' '}
 							<span className="text-indigo-400 text-sm font-normal">
-								(Save 20%)
+								(Save 10%)
 							</span>
 						</span>
 					</div>
@@ -163,22 +158,17 @@ const PricingSection: React.FC = () => {
 									{getDescription(tier)}
 								</p>
 								<div className="mb-6">
-									<span className="text-4xl font-bold text-white">
-										{formatPrice(
-											isAnnual
-												? Math.round(tier.annualPrice / 12)
-												: tier.monthlyPrice
-										)}
-									</span>
-									{tier.id !== 1 && (
-										<span className="text-gray-400 ml-2">
-											{isAnnual ? '/mo' : '/mo'}
-											<span className="block text-sm mt-1">
-												{tier.id === 1
-													? 'One-time payment'
-													: `£${
-															tier.id === 1 ? '0' : '1,250'
-													  } setup fee`}
+									{tier.id === 1 ? (
+										<span className="text-4xl font-bold text-white">
+											£{tier.oneTimeCost}
+										</span>
+									) : (
+										<span className="text-4xl font-bold text-white">
+											{formatPrice(
+												isAnnual ? tier.annualPrice / 12 : tier.monthlyPrice
+											)}
+											<span className="text-gray-400 ml-2">
+												{isAnnual ? '/mo' : '/mo'}
 											</span>
 										</span>
 									)}

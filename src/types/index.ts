@@ -33,8 +33,9 @@ export interface PricingTier {
   monthlyPrice: number;
   annualPrice: number;
   features: string[];
-  recommended?: boolean;
   ctaText: string;
+  recommended?: boolean;
+  oneTimeCost?: number; // Add this property
 }
 
 export interface Faq {
