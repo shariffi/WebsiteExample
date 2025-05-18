@@ -18,18 +18,19 @@ const ContactSection: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
+  
     emailjs.send(
-      'service_jm3dngg', // Replace with your EmailJS Service ID
-      'service_jm3dngg', // Replace with your EmailJS Template ID
+      'service_jm3dngg',       // ✏️ Replace with your actual Service ID
+      'template_zb2ivjl',      // ✏️ Replace with your actual Template ID
       {
         name: formData.name,
         email: formData.email,
         phone: formData.phone,
         message: formData.message,
         business: formData.business,
+        time: new Date().toLocaleString()
       },
-      'fRcEpWKk5u8KmRKoM' // Replace with your EmailJS Public Key
+      'fRcEpWKk5u8KmRKoM'        // ✏️ Replace with your actual Public Key
     ).then(
       () => {
         alert('Message sent successfully!');
