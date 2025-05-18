@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import emailjs from '@emailjs/browser';
 import { Mail, Phone, Clock, Send } from 'lucide-react';
 
 const ContactSection: React.FC = () => {
@@ -17,16 +18,34 @@ const ContactSection: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real implementation, you would send the form data to a server
-    alert('Form submitted! In a real implementation, this would be sent to the server.');
-    console.log(formData);
+
+    emailjs.send(
+      'service_jm3dngg', // Replace with your EmailJS Service ID
+      'service_jm3dngg', // Replace with your EmailJS Template ID
+      {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        message: formData.message,
+        business: formData.business,
+      },
+      'fRcEpWKk5u8KmRKoM' // Replace with your EmailJS Public Key
+    ).then(
+      () => {
+        alert('Message sent successfully!');
+        setFormData({ name: '', email: '', phone: '', message: '', business: '' });
+      },
+      (error) => {
+        console.error(error);
+        alert('Failed to send message. Please try again later.');
+      }
+    );
   };
 
   return (
     <section id="contact" className="py-24 bg-gradient-to-b from-gray-900 to-gray-950 relative">
-      {/* Background pattern */}
       <div className="absolute top-0 left-0 w-full h-64 overflow-hidden z-0">
-        <div className="absolute w-full h-full bg-indigo-900/10 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNCI+PHBhdGggZD0iTTM2IDM0djZoNnYtNmgtNnptNiA2djZoNnYtNmgtNnptLTEyIDBoNnY2aC02di02em0xMiAwaDZ2NmgtNnYtNnoiLz48L2c+PC9nPjwvc3ZnPg==')]"></div>
+        <div className="absolute w-full h-full bg-indigo-900/10 bg-[url('data:image/svg+xml;base64,...')]"></div>
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -41,7 +60,6 @@ const ContactSection: React.FC = () => {
           <div className="lg:col-span-2">
             <div className="bg-gray-900 rounded-xl p-8 border border-gray-800 shadow-lg">
               <h3 className="text-2xl font-semibold text-white mb-6">Get Your Free Mockup</h3>
-              
               <form onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                   <div>
@@ -71,7 +89,6 @@ const ContactSection: React.FC = () => {
                     />
                   </div>
                 </div>
-                
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                   <div>
                     <label htmlFor="phone" className="block text-gray-300 mb-2">Phone Number</label>
@@ -98,7 +115,6 @@ const ContactSection: React.FC = () => {
                     />
                   </div>
                 </div>
-                
                 <div className="mb-6">
                   <label htmlFor="message" className="block text-gray-300 mb-2">Tell us about your project</label>
                   <textarea
@@ -112,7 +128,6 @@ const ContactSection: React.FC = () => {
                     placeholder="What are your goals for this project? Do you have an existing website?"
                   ></textarea>
                 </div>
-                
                 <button
                   type="submit"
                   className="bg-indigo-600 hover:bg-indigo-700 text-white py-3 px-8 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg font-medium flex items-center justify-center"
@@ -123,11 +138,11 @@ const ContactSection: React.FC = () => {
               </form>
             </div>
           </div>
-          
+
+          {/* Contact Information Box */}
           <div>
             <div className="bg-gray-900 rounded-xl p-8 border border-gray-800 shadow-lg h-full">
               <h3 className="text-2xl font-semibold text-white mb-6">Contact Information</h3>
-              
               <div className="space-y-6">
                 <div className="flex items-start">
                   <div className="bg-gray-800 p-3 rounded-lg mr-4">
@@ -140,7 +155,6 @@ const ContactSection: React.FC = () => {
                     </a>
                   </div>
                 </div>
-                
                 <div className="flex items-start">
                   <div className="bg-gray-800 p-3 rounded-lg mr-4">
                     <Phone className="h-5 w-5 text-indigo-400" />
@@ -152,7 +166,6 @@ const ContactSection: React.FC = () => {
                     </a>
                   </div>
                 </div>
-                
                 <div className="flex items-start">
                   <div className="bg-gray-800 p-3 rounded-lg mr-4">
                     <Clock className="h-5 w-5 text-indigo-400" />
@@ -165,7 +178,6 @@ const ContactSection: React.FC = () => {
                   </div>
                 </div>
               </div>
-              
               <div className="mt-10 pt-10 border-t border-gray-800">
                 <h4 className="text-white font-medium mb-4">Our Process</h4>
                 <ol className="space-y-4">
