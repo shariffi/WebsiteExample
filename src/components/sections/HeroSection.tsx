@@ -1,26 +1,7 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { ArrowRight } from 'lucide-react';
-import Spline from '@splinetool/react-spline';
 
 const HeroSection: React.FC = () => {
-  const splineContainerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (splineContainerRef.current) {
-        const rect = splineContainerRef.current.getBoundingClientRect();
-        const x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
-        const y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
-
-        // Update Spline camera or object position based on mouse movement
-        // This will be handled by the Spline scene itself
-      }
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
   return (
     <section
       id="hero"
@@ -31,14 +12,16 @@ const HeroSection: React.FC = () => {
         backgroundPosition: 'center',
       }}
     >
-      {/* Spline Container */}
+      {/* Background Animation Container */}
       <div 
-        ref={splineContainerRef}
         className="absolute inset-0 w-full h-full z-0"
       >
-        <Spline 
-          scene="https://my.spline.design/particlenebula-XpHc3JXFctWDLqaRCzJnVmOo/"
-          className="w-full h-full"
+        <iframe 
+          src='https://my.spline.design/particlenebula-XpHc3JXFctWDLqaRCzJnVmOo/' 
+          frameBorder='0' 
+          width='100%' 
+          height='100%'
+          title="Particle Nebula Animation"
         />
       </div>
 
