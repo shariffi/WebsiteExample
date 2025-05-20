@@ -15,13 +15,25 @@ const HeroSection: React.FC = () => {
       {/* Background Animation Container */}
       <div 
         className="absolute inset-0 w-full h-full z-0"
+        style={{
+          position: 'absolute',
+          width: '100%',
+          height: '150%', // Increased height to push watermark below
+          top: '-25%', // Negative top to maintain centered view while hiding watermark
+          left: 0,
+          overflow: 'hidden'
+        }}
       >
         <iframe 
           src='https://my.spline.design/particlenebula-XpHc3JXFctWDLqaRCzJnVmOo/' 
           frameBorder='0' 
-          width='100%' 
+          width='100%'
           height='100%'
           title="Particle Nebula Animation"
+          style={{
+            transform: 'scale(1.2)', // Slightly scale up to ensure full coverage
+            pointerEvents: 'none' // Prevents iframe from capturing mouse events
+          }}
         />
       </div>
 
