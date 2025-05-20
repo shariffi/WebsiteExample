@@ -37,7 +37,7 @@ const HeroSection: React.FC = () => {
         className="absolute inset-0 w-full h-full z-0"
       >
         <Spline 
-          scene="https://my.spline.design/particlenebula-XpHc3JXFctWDLqaRCzJnVmOo/"
+          scene="https://prod.spline.design/6Wq1Q7YGyM-iab9i/scene.splinecode"
           className="w-full h-full"
         />
       </div>
