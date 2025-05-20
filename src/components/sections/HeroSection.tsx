@@ -1,6 +1,5 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
-import Spline from '@splinetool/react-spline';
 
 const HeroSection: React.FC = () => {
   return (
@@ -19,16 +18,21 @@ const HeroSection: React.FC = () => {
         style={{
           position: 'absolute',
           width: '100%',
-          height: '150%',
-          top: '-25%',
+          height: '150%', // Increased height to push watermark below
+          top: '-25%', // Negative top to maintain centered view while hiding watermark
           left: 0,
           overflow: 'hidden'
         }}
       >
-        <Spline 
-          scene="https://prod.spline.design/XpHc3JXFctWDLqaRCzJnVmOo/scene.splinecode"
+        <iframe 
+          src='https://my.spline.design/particlenebula-XpHc3JXFctWDLqaRCzJnVmOo/' 
+          frameBorder='0' 
+          width='100%'
+          height='100%'
+          title="Particle Nebula Animation"
           style={{
-            transform: 'scale(1.2)',
+            transform: 'scale(1.2)', // Slightly scale up to ensure full coverage
+            pointerEvents: 'none' // Prevents iframe from capturing mouse events
           }}
         />
       </div>
