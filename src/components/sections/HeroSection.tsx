@@ -18,21 +18,22 @@ const HeroSection: React.FC = () => {
         style={{
           position: 'absolute',
           width: '100%',
-          height: '150%', // Increased height to push watermark below
-          top: '-25%', // Negative top to maintain centered view while hiding watermark
+          height: '150%',
+          top: '-25%',
           left: 0,
-          overflow: 'hidden'
+          overflow: 'hidden',
+          pointerEvents: 'auto' // Enable pointer events for cursor interaction
         }}
       >
         <iframe 
-          src='https://my.spline.design/particlenebula-XpHc3JXFctWDLqaRCzJnVmOo/' 
-          frameBorder='0' 
+          src='https://my.spline.design/boxeshover-JdveY3Z7lIqvEnuCgj4VqbDn/'
+          frameBorder='0'
           width='100%'
           height='100%'
-          title="Particle Nebula Animation"
+          title="Interactive Boxes Animation"
           style={{
-            transform: 'scale(1.2)', // Slightly scale up to ensure full coverage
-            pointerEvents: 'none' // Prevents iframe from capturing mouse events
+            transform: 'scale(1.2)',
+            pointerEvents: 'auto' // Enable pointer events for cursor interaction
           }}
         />
       </div>
