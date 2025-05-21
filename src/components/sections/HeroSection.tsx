@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
+import Spline from '@splinetool/react-spline';
 
 const HeroSection: React.FC = () => {
   return (
@@ -22,18 +23,14 @@ const HeroSection: React.FC = () => {
           top: '-25%',
           left: 0,
           overflow: 'hidden',
-          pointerEvents: 'auto' // Enable pointer events for cursor interaction
         }}
       >
-        <iframe 
-          src='https://my.spline.design/boxeshover-JdveY3Z7lIqvEnuCgj4VqbDn/'
-          frameBorder='0'
-          width='100%'
-          height='100%'
-          title="Interactive Boxes Animation"
+        <Spline 
+          scene="https://prod.spline.design/JdveY3Z7lIqvEnuCgj4VqbDn/scene.splinecode"
           style={{
+            width: '100%',
+            height: '100%',
             transform: 'scale(1.2)',
-            pointerEvents: 'auto' // Enable pointer events for cursor interaction
           }}
         />
       </div>
