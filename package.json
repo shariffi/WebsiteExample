@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emailjs/browser": "^3.11.0",
     "@splinetool/react-spline": "2.1.0",
     "@splinetool/runtime": "1.0.47",
     "lucide-react": "^0.309.0",
